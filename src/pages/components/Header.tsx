@@ -11,9 +11,7 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ jsonData }) => {
-  // Ensure that jsonData and its properties are defined
   if (!jsonData || !jsonData[0] || !jsonData[0].meta) {
-    // You can add fallback content or return null
     return null
   }
 

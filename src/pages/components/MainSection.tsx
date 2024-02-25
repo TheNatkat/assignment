@@ -8,6 +8,16 @@ interface MainSectionProps {
 }
 
 const MainSection: React.FC<MainSectionProps> = ({ jsonData }) => {
+  if (
+    !jsonData ||
+    !jsonData[0] ||
+    !jsonData[0].pageData ||
+    !jsonData[0].category
+  ) {
+    return null
+  }
+
+
   return (
     <div className="main-section">
       <div className="heading-container">
