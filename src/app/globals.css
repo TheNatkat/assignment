@@ -158,6 +158,12 @@ body {
   column-gap: 1rem;
 }
 
+.main-page {
+  display: flex;
+  margin-top: 8vh;
+  row-gap: 8vh;
+}
+
 .mid-heading-container {
   display: flex;
 }
@@ -294,6 +300,18 @@ body {
   font-size: small;
 }
 
+.img-data-page {
+  color: white;
+  width: 5vw;
+  text-align: center;
+  background-color: red;
+  border-radius: 10px;
+  padding: 7px;
+  overflow: hidden;
+  display: inline-block;
+  font-size: 0.7rem;
+}
+
 .Footer {
   height: 30vh;
 
@@ -344,6 +362,65 @@ body {
   cursor: pointer;
 }
 
+.blog-area {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+  width: 60vw;
+}
+
+.recent-post-area {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  width: 20vw;
+}
+
+.breadcrumbs {
+  display: flex;
+  column-gap: 1rem;
+}
+
+.content {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+}
+
+.img-container {
+  position: relative;
+}
+
+.img-recent {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  border-radius: 5px;
+}
+
+.text-area {
+  position: relative;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  bottom: 60px;
+  background-color: white;
+  z-index: 1;
+  width: 80%;
+  left: 30px;
+}
+
+.img-full {
+  width: 50%;
+  height: 100%;
+  object-fit: fill;
+  border-radius: 5px;
+}
+
 @media (max-width: 1100px) {
   .home {
     padding-left: 5vw;
@@ -355,6 +432,10 @@ body {
   }
 
   .navbar {
+    display: none;
+  }
+
+  .img-data-page{
     display: none;
   }
 
@@ -451,5 +532,25 @@ body {
   .footer-navbar {
     flex-direction: column;
     row-gap: 1rem;
+  }
+
+  .recent-post-area {
+    display: none;
+  }
+
+  .blog-area {
+    width: 100vw;
+  }
+
+  .img-full {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    border-radius: 5px;
+  }
+
+  .main-section {
+    display: flex;
+    column-gap: 2rem;
   }
 }

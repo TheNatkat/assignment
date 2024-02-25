@@ -1,24 +1,29 @@
 // Navbar.js
+
 import React from 'react'
+import Link from 'next/link'
 
 interface MainSectionProps {
-  handleClick: () => void
   jsonData: any
 }
 
-const MainSection: React.FC<MainSectionProps> = ({ jsonData, handleClick }) => {
-
+const MainSection: React.FC<MainSectionProps> = ({ jsonData }) => {
   return (
     <div className="main-section">
       <div className="heading-container">
-        <div className="heading-single-box" onClick={() => handleClick}>
-          <img className="img-fill" src={jsonData[0].pageData.photo.cover} />
+        <Link className="heading-single-box" href="/detail">
+          <img
+            className="img-fill"
+            onClick={() => console.log('hey')}
+            src={jsonData[0].pageData.photo.cover}
+          />
 
           <div className="img-data">
             <span className="img-data-category">{jsonData[0].category}</span>
             <h3 className="img-data-heading">{jsonData[0].pageData.title}</h3>
           </div>
-        </div>
+        </Link>
+
         <div className="heading-double-box">
           <div className="first-box">
             <img className="img-fill" src={jsonData[1].pageData.photo.cover} />
@@ -205,7 +210,7 @@ const MainSection: React.FC<MainSectionProps> = ({ jsonData, handleClick }) => {
         </div>
         <div className="vertical">
           <div className="sub-heading">
-            <h6>Hot Topic</h6>
+            <h6>Fashion</h6>
             <hr />
           </div>
           <div className="vertical-data">
@@ -243,7 +248,7 @@ const MainSection: React.FC<MainSectionProps> = ({ jsonData, handleClick }) => {
         </div>
         <div className="vertical">
           <div className="sub-heading">
-            <h6>Hot Topic</h6>
+            <h6>Tech</h6>
             <hr />
           </div>
           <div className="vertical-data">

@@ -4,9 +4,9 @@ import { FaFacebookF, FaTwitter } from 'react-icons/fa'
 import { IoLogoInstagram, IoIosSearch } from 'react-icons/io'
 import { FaLinkedinIn } from 'react-icons/fa6'
 import { RxHamburgerMenu } from 'react-icons/rx'
+import Link from 'next/link'
 interface HeaderProps {
-  
-  jsonData: any,
+  jsonData: any
 }
 
 const Header: React.FC<HeaderProps> = ({ jsonData }) => {
@@ -33,9 +33,9 @@ const Header: React.FC<HeaderProps> = ({ jsonData }) => {
         </div>
 
         <div className="navbar-mid">
-          <h6 className="page-selected" >
-            Home
-          </h6>
+          <Link href={'/'} style={{ textDecoration: 'none' }}>
+            <h6 className="page-selected">Home</h6>
+          </Link>
           <h6>Fashion</h6>
           <h6>Technology</h6>
           <h6>Life Style</h6>

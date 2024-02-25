@@ -1,4 +1,3 @@
-// Footer.js
 import React from 'react'
 import { FaFacebookF, FaTwitter } from 'react-icons/fa'
 import { IoLogoInstagram } from 'react-icons/io'
