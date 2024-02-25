@@ -5,11 +5,18 @@ import { IoLogoInstagram, IoIosSearch } from 'react-icons/io'
 import { FaLinkedinIn } from 'react-icons/fa6'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import Link from 'next/link'
+
 interface HeaderProps {
   jsonData: any
 }
 
 const Header: React.FC<HeaderProps> = ({ jsonData }) => {
+  // Ensure that jsonData and its properties are defined
+  if (!jsonData || !jsonData[0] || !jsonData[0].meta) {
+    // You can add fallback content or return null
+    return null
+  }
+
   return (
     <>
       <div className="logo-container">
