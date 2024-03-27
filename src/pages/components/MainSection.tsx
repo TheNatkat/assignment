@@ -1,10 +1,10 @@
 // Navbar.js
 
-import React from 'react'
-import Link from 'next/link'
+import React from "react";
+import Link from "next/link";
 
 interface MainSectionProps {
-  jsonData: any
+  jsonData: any;
 }
 
 const MainSection: React.FC<MainSectionProps> = ({ jsonData }) => {
@@ -14,9 +14,20 @@ const MainSection: React.FC<MainSectionProps> = ({ jsonData }) => {
     !jsonData[0].pageData ||
     !jsonData[0].category
   ) {
-    return null
+    return null;
   }
 
+  const renderMainSectionItem = (data: any, index: number) => {
+    return (
+      <div className="first-box" key={index}>
+        <img className="img-fill" src={data.pageData.photo.cover} />
+        <div className="img-data">
+          <span className="img-data-category">{data.category}</span>
+          <h3 className="img-data-heading">{data.pageData.title}</h3>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className="main-section">
@@ -24,7 +35,7 @@ const MainSection: React.FC<MainSectionProps> = ({ jsonData }) => {
         <Link className="heading-single-box" href="/detail">
           <img
             className="img-fill"
-            onClick={() => console.log('hey')}
+            onClick={() => console.log("hey")}
             src={jsonData[0].pageData.photo.cover}
           />
 
@@ -35,22 +46,11 @@ const MainSection: React.FC<MainSectionProps> = ({ jsonData }) => {
         </Link>
 
         <div className="heading-double-box">
-          <div className="first-box">
-            <img className="img-fill" src={jsonData[1].pageData.photo.cover} />
-
-            <div className="img-data">
-              <span className="img-data-category">{jsonData[1].category}</span>
-              <h3 className="img-data-heading">{jsonData[1].pageData.title}</h3>
-            </div>
-          </div>
-          <div className="second-box">
-            <img className="img-fill" src={jsonData[2].pageData.photo.cover} />
-
-            <div className="img-data">
-              <span className="img-data-category">{jsonData[2].category}</span>
-              <h3 className="img-data-heading">{jsonData[2].pageData.title}</h3>
-            </div>
-          </div>
+          {jsonData
+            .slice(1, 3)
+            .map((data: any, index: number) =>
+              renderMainSectionItem(data, index + 1)
+            )}
         </div>
       </div>
 
@@ -77,38 +77,12 @@ const MainSection: React.FC<MainSectionProps> = ({ jsonData }) => {
               </div>
             </div>
             <div className="hot-topic-just-content">
-              <div className="hot-topic-heading-container">
-                <h3 className="img-data-heading">
-                  {jsonData[3].pageData.title}
-                </h3>
-                <h3 className="img-data-date">
-                  {jsonData[3].publish.slice(0, 10)}
-                </h3>
-              </div>
-              <div className="hot-topic-heading-container">
-                <h3 className="img-data-heading">
-                  {jsonData[4].pageData.title}
-                </h3>
-                <h3 className="img-data-date">
-                  {jsonData[4].publish.slice(0, 10)}
-                </h3>
-              </div>
-              <div className="hot-topic-heading-container">
-                <h3 className="img-data-heading">
-                  {jsonData[5].pageData.title}
-                </h3>
-                <h3 className="img-data-date">
-                  {jsonData[5].publish.slice(0, 10)}
-                </h3>
-              </div>
-              <div className="hot-topic-heading-container">
-                <h3 className="img-data-heading">
-                  {jsonData[6].pageData.title}
-                </h3>
-                <h3 className="img-data-date">
-                  {jsonData[6].publish.slice(0, 10)}
-                </h3>
-              </div>
+              {jsonData.slice(3, 7).map((data: any, index: number) => (
+                <div className="hot-topic-heading-container" key={index}>
+                  <h3 className="img-data-heading">{data.pageData.title}</h3>
+                  <h3 className="img-data-date">{data.publish.slice(0, 10)}</h3>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -186,36 +160,14 @@ const MainSection: React.FC<MainSectionProps> = ({ jsonData }) => {
             <hr />
           </div>
           <div className="vertical-data">
-            <div className="custom-category-bottom">
-              <img
-                className="img-xsmall"
-                src={jsonData[2].pageData.photo.cover}
-              />
-
-              <h3 className="img-data-heading small-text">
-                {jsonData[2].pageData.title}
-              </h3>
-            </div>
-            <div className="custom-category-bottom">
-              <img
-                className="img-xsmall"
-                src={jsonData[6].pageData.photo.cover}
-              />
-
-              <h3 className="img-data-heading small-text">
-                {jsonData[6].pageData.title}
-              </h3>
-            </div>
-            <div className="custom-category-bottom">
-              <img
-                className="img-xsmall"
-                src={jsonData[3].pageData.photo.cover}
-              />
-
-              <h3 className="img-data-heading small-text">
-                {jsonData[3].pageData.title}
-              </h3>
-            </div>
+            {jsonData.slice(2, 5).map((data: any, index: number) => (
+              <div className="custom-category-bottom" key={index}>
+                <img className="img-xsmall" src={data.pageData.photo.cover} />
+                <h3 className="img-data-heading small-text">
+                  {data.pageData.title}
+                </h3>
+              </div>
+            ))}
           </div>
         </div>
         <div className="vertical">
@@ -224,36 +176,14 @@ const MainSection: React.FC<MainSectionProps> = ({ jsonData }) => {
             <hr />
           </div>
           <div className="vertical-data">
-            <div className="custom-category-bottom">
-              <img
-                className="img-xsmall"
-                src={jsonData[2].pageData.photo.cover}
-              />
-
-              <h3 className="img-data-heading small-text">
-                {jsonData[2].pageData.title}
-              </h3>
-            </div>
-            <div className="custom-category-bottom">
-              <img
-                className="img-xsmall"
-                src={jsonData[6].pageData.photo.cover}
-              />
-
-              <h3 className="img-data-heading small-text">
-                {jsonData[6].pageData.title}
-              </h3>
-            </div>
-            <div className="custom-category-bottom">
-              <img
-                className="img-xsmall"
-                src={jsonData[3].pageData.photo.cover}
-              />
-
-              <h3 className="img-data-heading small-text">
-                {jsonData[3].pageData.title}
-              </h3>
-            </div>
+            {jsonData.slice(2, 5).map((data: any, index: number) => (
+              <div className="custom-category-bottom" key={index}>
+                <img className="img-xsmall" src={data.pageData.photo.cover} />
+                <h3 className="img-data-heading small-text">
+                  {data.pageData.title}
+                </h3>
+              </div>
+            ))}
           </div>
         </div>
         <div className="vertical">
@@ -262,41 +192,19 @@ const MainSection: React.FC<MainSectionProps> = ({ jsonData }) => {
             <hr />
           </div>
           <div className="vertical-data">
-            <div className="custom-category-bottom">
-              <img
-                className="img-xsmall"
-                src={jsonData[2].pageData.photo.cover}
-              />
-
-              <h3 className="img-data-heading small-text">
-                {jsonData[2].pageData.title}
-              </h3>
-            </div>
-            <div className="custom-category-bottom">
-              <img
-                className="img-xsmall"
-                src={jsonData[6].pageData.photo.cover}
-              />
-
-              <h3 className="img-data-heading small-text">
-                {jsonData[6].pageData.title}
-              </h3>
-            </div>
-            <div className="custom-category-bottom">
-              <img
-                className="img-xsmall"
-                src={jsonData[3].pageData.photo.cover}
-              />
-
-              <h3 className="img-data-heading small-text">
-                {jsonData[3].pageData.title}
-              </h3>
-            </div>
+            {jsonData.slice(2, 5).map((data: any, index: number) => (
+              <div className="custom-category-bottom" key={index}>
+                <img className="img-xsmall" src={data.pageData.photo.cover} />
+                <h3 className="img-data-heading small-text">
+                  {data.pageData.title}
+                </h3>
+              </div>
+            ))}
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default MainSection
+export default MainSection;
