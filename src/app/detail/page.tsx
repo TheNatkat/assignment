@@ -1,9 +1,8 @@
-'use client'
-import React from 'react'
-import jsonData from '../../../public/oyebusy-dummy-data.json'
-import Header from '@/pages/components/Header'
-import DetailsFooter from '@/pages/components/DetailsFooter'
-
+"use client";
+import React from "react";
+import jsonData from "../../../public/oyebusy-dummy-data.json";
+import Header from "@/pages/components/Header";
+import DetailsFooter from "@/pages/components/DetailsFooter";
 
 const Detail = () => {
   return (
@@ -14,16 +13,12 @@ const Detail = () => {
           <div className="blog-area">
             <div className="breadcrumbs">
               {jsonData[0].pageData.breadcrumbItems.map(
-                (item: any, idx: number) => {
-                  return idx === 0 ? (
-                    <h6 key={idx}>{item.displayName}</h6>
-                  ) : (
-                    <>
-                      <h6 key={idx + 100}> {'>'} </h6>
-                      <h6 key={idx}>{item.displayName}</h6>
-                    </>
-                  )
-                }
+                (item: any, idx: number) => (
+                  <React.Fragment key={idx}>
+                    {idx === 0 ? null : <h6>{">"}</h6>}
+                    <h6>{item.displayName}</h6>
+                  </React.Fragment>
+                )
               )}
             </div>
             <img
@@ -31,86 +26,46 @@ const Detail = () => {
               src={jsonData[0].pageData.photo.thumbnail}
             />
             <span className="img-data-page">{jsonData[0].category}</span>
-
             <h3 className="img-data-date">
               {jsonData[0].publish.slice(0, 10)}
             </h3>
 
-            <h1>{jsonData[2].pageData.title} </h1>
-            <div
-              className="content"
-              dangerouslySetInnerHTML={{ __html: jsonData[1].pageData.content }}
-            />
-
-            <img className="img-full" src={jsonData[2].pageData.photo.cover} />
-
-            <h1>{jsonData[2].pageData.title} </h1>
-            <div
-              className="content"
-              dangerouslySetInnerHTML={{ __html: jsonData[2].pageData.content }}
-            />
+            {jsonData.slice(1, 3).map((data, index) => (
+              <React.Fragment key={index}>
+                <h1>{data.pageData.title}</h1>
+                <div
+                  className="content"
+                  dangerouslySetInnerHTML={{ __html: data.pageData.content }}
+                />
+                <img className="img-full" src={data.pageData.photo.cover} />
+              </React.Fragment>
+            ))}
           </div>
           <div className="recent-post-area">
             <div className="sub-heading">
               <h6>Recent Posts</h6>
               <hr />
             </div>
-            <div className="recent-posts-area">
-              <div className="img-container">
-                <img
-                  className="img-recent"
-                  src={jsonData[3].pageData.photo.cover}
-                />
+            {jsonData.slice(3, 9).map((data, index) => (
+              <div className="recent-posts-area" key={index}>
+                <div className="img-container">
+                  <img className="img-recent" src={data.pageData.photo.cover} />
+                </div>
+                <div className="text-area">
+                  <h6 className="recent-category">{data.category}</h6>
+                  <h6 className="img-data-heading small-text">
+                    {data.pageData.title}
+                  </h6>
+                  <h6 className="img-data-date">{data.publish.slice(0, 10)}</h6>
+                </div>
               </div>
-              <div className="text-area">
-                <h6 className="recent-category">{jsonData[3].category}</h6>
-                <h6 className="img-data-heading small-text">
-                  {jsonData[3].pageData.title}
-                </h6>
-                <h6 className="img-data-date">
-                  {jsonData[3].publish.slice(0, 10)}
-                </h6>
-              </div>
-            </div>
-            <div className="recent-posts-area">
-              <div className="img-container">
-                <img
-                  className="img-recent"
-                  src={jsonData[7].pageData.photo.cover}
-                />
-              </div>
-              <div className="text-area">
-                <h6 className="recent-category">{jsonData[7].category}</h6>
-                <h6 className="img-data-heading small-text">
-                  {jsonData[7].pageData.title}
-                </h6>
-                <h6 className="img-data-date">
-                  {jsonData[7].publish.slice(0, 10)}
-                </h6>
-              </div>
-            </div>
-
-            <div className="img-container">
-              <img
-                className="img-recent"
-                src={jsonData[6].pageData.photo.cover}
-              />
-            </div>
-            <div className="text-area">
-              <h6 className="recent-category">{jsonData[6].category}</h6>
-              <h6 className="img-data-heading small-text">
-                {jsonData[6].pageData.title}
-              </h6>
-              <h6 className="img-data-date">
-                {jsonData[6].publish.slice(0, 10)}
-              </h6>
-            </div>
+            ))}
           </div>
         </div>
       </div>
       <DetailsFooter />
     </>
-  )
-}
+  );
+};
 
-export default Detail
+export default Detail;
