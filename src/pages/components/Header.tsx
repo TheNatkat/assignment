@@ -17,18 +17,21 @@ const Header: React.FC<HeaderProps> = ({ jsonData }) => {
 
   return (
     <>
-      <div className="logo-container">
-        <img src={jsonData[0].meta['og:image']} className="logo-image" />
-      </div>
-      <div className="navbar-mobile">
-        <>
-          <img src={jsonData[0].meta['og:image']} className="logo-image" />
-        </>
-        <div className="burger">
-          <IoIosSearch />
-          <RxHamburgerMenu />
+      <Link href={"/"} style={{ textDecoration: "none" }}>
+        <div className="logo-container">
+          <img src={jsonData[0].meta["og:image"]} className="logo-image" />
         </div>
-      </div>
+
+        <div className="navbar-mobile">
+          <>
+            <img src={jsonData[0].meta["og:image"]} className="logo-image" />
+          </>
+          <div className="burger">
+            <IoIosSearch />
+            <RxHamburgerMenu />
+          </div>
+        </div>
+      </Link>
       <div className={`navbar`}>
         <div className="Social-media">
           <FaFacebookF />
@@ -38,13 +41,13 @@ const Header: React.FC<HeaderProps> = ({ jsonData }) => {
         </div>
 
         <div className="navbar-mid">
-          <Link href={'/'} style={{ textDecoration: 'none' }}>
-            <h6 className="page-selected">Home</h6>
+          <Link href={"/"} style={{ textDecoration: "none" }}>
+            <h6 className="page-selected page-header">Home</h6>
           </Link>
-          <h6>Fashion</h6>
-          <h6>Technology</h6>
-          <h6>Life Style</h6>
-          <h6>Environment</h6>
+          <h6 className="page-header ">Fashion</h6>
+          <h6 className="page-header">Technology</h6>
+          <h6 className="page-header">Life Style</h6>
+          <h6 className="page-header">Environment</h6>
         </div>
 
         <div className="search-bar">
@@ -52,7 +55,7 @@ const Header: React.FC<HeaderProps> = ({ jsonData }) => {
         </div>
       </div>
     </>
-  )
+  );
 }
 
 export default Header

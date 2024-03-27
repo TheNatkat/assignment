@@ -14,11 +14,14 @@ const Page = () => {
   }, [])
 
   return (
+    <>
     <div className="home">
       <Header jsonData={jsonData} />
       <MainSection jsonData={jsonData} />
-      <Footer />
+     
     </div>
+     <Footer />
+    </>
   )
 }
 

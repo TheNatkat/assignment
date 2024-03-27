@@ -16,8 +16,8 @@ body {
   width: 100vw;
   display: flex;
   flex-direction: column;
-  padding-left: 20vw;
-  padding-right: 20vw;
+  padding-left: 17vw;
+  padding-right: 17vw;
 }
 
 .logo-container {
@@ -63,6 +63,15 @@ body {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+}
+
+.page-header:hover{
+   display: flex;
+  justify-content: center;
+  align-items: center;
+  color: red;
+  height: 8vh;
+  border-bottom: 1px solid red;
 }
 
 .page-selected {
@@ -435,7 +444,7 @@ body {
     display: none;
   }
 
-  .img-data-page{
+  .img-data-page {
     display: none;
   }
 
